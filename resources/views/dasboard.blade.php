@@ -1,1 +1,1 @@
-@extends('layout.main')
+@extends('layouts.app')
