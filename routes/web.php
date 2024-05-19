@@ -23,7 +23,7 @@ use App\Http\Controllers\LabelController;
 //
 
 
-Route::get('/dasboard', function () {
+Route::get('/', function () {
     return view('dasboard');
 });
 

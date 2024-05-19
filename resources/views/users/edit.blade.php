@@ -24,7 +24,10 @@
                             <input type="email" name="email" id="email" class="form-control" value="{{ $user->email }}" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Update
+                        </button>
+
                     </form>
                 </div>
             </div>

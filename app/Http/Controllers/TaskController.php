@@ -8,11 +8,32 @@ use App\Models\User;
 
 class TaskController extends Controller
 {
-    public function index()
-    {
-        $tasks = Task::latest()->get();
-        return view('tasks.index', compact('tasks'));
+
+    public function index(Request $request)
+{
+    $query = Task::query();
+
+    if ($request->has('search')) {
+        $search = $request->input('search');
+        $query->where(function ($q) use ($search) {
+            $q->where('title', 'LIKE', "%{$search}%")
+              ->orWhere('description', 'LIKE', "%{$search}%")
+              ->orWhere('status', 'LIKE', "%{$search}%")
+              ->orWhere('priority', 'LIKE', "%{$search}%")
+              ->orWhere('due_date', 'LIKE', "%{$search}%")
+              ->orWhereHas('user', function ($q) use ($search) {
+                  $q->where('name', 'LIKE', "%{$search}%")
+                    ->orWhere('email', 'LIKE', "%{$search}%");
+              });
+        });
     }
+
+    $tasks = $query->with('user')->paginate(10);
+
+    return view('tasks.index', compact('tasks'));
+}
+
+
 
     public function create()
     {
@@ -35,8 +56,9 @@ class TaskController extends Controller
         return redirect()->route('tasks.index')->with('success', 'Task created successfully.');
     }
 
-    public function show(Task $task)
+    public function show($id)
     {
+        $task = Task::with('user')->findOrFail($id);
         return view('tasks.show', compact('task'));
     }
 
