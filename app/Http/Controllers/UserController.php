@@ -8,17 +8,20 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function index(Request $request)
-    {
-        $search = $request->input('search');
+{
+    $search = $request->query('search');
+    $query = User::query();
 
-        // Filter users based on search input
-        $users = User::when($search, function ($query, $search) {
-            return $query->where('name', 'like', '%' . $search . '%')
-                         ->orWhere('email', 'like', '%' . $search . '%');
-        })->paginate(10);
-
-        return view('users.index', compact('users'));
+    if ($search) {
+        $query->where('name', 'LIKE', "%{$search}%")
+              ->orWhere('email', 'LIKE', "%{$search}%");
     }
+
+    // Paginate the results
+    $users = $query->paginate(10); // 10 users per page
+
+    return view('users.index', compact('users'));
+}
 
 
     public function create()

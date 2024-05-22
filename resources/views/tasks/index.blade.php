@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Tasks')
+
+@section('page-title', 'Tasks')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -17,7 +21,6 @@
                             </div>
                         </div>
                     </form>
-
                 </div>
 
                 <div class="card-body">
@@ -70,7 +73,10 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{ $tasks->links() }}
+                        <!-- Display pagination links -->
+                        <div class="d-flex justify-content-center">
+                            {{ $tasks->appends(['search' => request()->query('search')])->links('vendor.pagination.bootstrap-4') }}
+                        </div>
                     @endif
                 </div>
             </div>
