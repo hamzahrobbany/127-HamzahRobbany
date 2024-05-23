@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Task Management APP</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -55,77 +55,87 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Task Management APP</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar Menu -->
-<nav class="mt-2">
-    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Dashboard Menu -->
-        <li class="nav-item">
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Dashboard Menu -->
+          <li class="nav-item">
             <a href="{{ route('dashboard') }}" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                    Dashboard
-                </p>
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>Dashboard</p>
             </a>
-        </li>
+          </li>
 
-        <!-- User Management Menu -->
-        <li class="nav-item">
+          <!-- User Management Menu -->
+          <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-users"></i>
-                <p>
-                    User Management
-                    <i class="right fas fa-angle-left"></i>
-                </p>
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                User Management
+                <i class="right fas fa-angle-left"></i>
+              </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('users.index') }}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Users</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('users.create') }}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Add User</p>
-                    </a>
-                </li>
+              <li class="nav-item">
+                <a href="{{ route('users.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Users</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('users.create') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add User</p>
+                </a>
+              </li>
             </ul>
-        </li>
-        <!-- Task Management Menu -->
-        <li class="nav-item">
+          </li>
+
+          <!-- Task Management Menu -->
+          <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tasks"></i>
-                <p>
-                    Task Management
-                    <i class="right fas fa-angle-left"></i>
-                </p>
+              <i class="nav-icon fas fa-tasks"></i>
+              <p>
+                Task Management
+                <i class="right fas fa-angle-left"></i>
+              </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('tasks.index') }}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Tasks</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('tasks.create') }}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Add Task</p>
-                    </a>
-                </li>
+              <li class="nav-item">
+                <a href="{{ route('tasks.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('tasks.create') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Task</p>
+                </a>
+              </li>
             </ul>
-        </li>
-        <!-- Add more items here -->
-    </ul>
-</nav>
-<!-- /.sidebar-menu -->
+          </li>
 
+          <!-- Logout Menu -->
+          <li class="nav-item">
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+            <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>Logout</p>
+            </a>
+          </li>
+
+          <!-- Add more items here -->
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
