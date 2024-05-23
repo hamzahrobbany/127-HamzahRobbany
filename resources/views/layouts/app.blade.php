@@ -67,7 +67,9 @@
           <li class="nav-item">
             <a href="{{ route('dashboard') }}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>Dashboard</p>
+              <p>
+                Dashboard
+              </p>
             </a>
           </li>
 
@@ -122,23 +124,25 @@
           </li>
 
           <!-- Logout Menu -->
-          <li class="nav-item">
+          <li class="nav-item mt-auto">
+            <a href="{{ route('logout') }}" class="nav-link"
+               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>
+                Logout
+              </p>
+            </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               @csrf
             </form>
-            <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>Logout</p>
-            </a>
           </li>
-
-          <!-- Add more items here -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
+
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -154,10 +158,18 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-inline">
-      Anything you want
+    <strong>Task Management APP</strong> - Cipadung Cibiru Kota Bandung
+    <div class="social-icons float-right">
+      <a href="https://www.instagram.com/hamzarobbanyhusen/" target="_blank" class="text-dark" style="font-size: 1.5rem; margin-left: 10px;">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/hamzah.robbany" target="_blank" class="text-dark" style="font-size: 1.5rem; margin-left: 10px;">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/hamzah-robbany-b17655165/" target="_blank" class="text-dark" style="font-size: 1.5rem; margin-left: 10px;">
+        <i class="fab fa-linkedin"></i>
+      </a>
     </div>
-    <strong>AdminLTE.io <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->
