@@ -2,8 +2,8 @@
 <html lang="en">
     @include('partials.header')
 
-
 <body class="hold-transition sidebar-mini layout-fixed">
+
 <div class="wrapper">
 
 
@@ -21,6 +21,10 @@
 
     @include('partials.footer')
 </div>
+
+
+
+
 <!-- ./wrapper -->
 
 <!-- jQuery -->
