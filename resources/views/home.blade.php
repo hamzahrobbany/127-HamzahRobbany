@@ -5,18 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('LOGIN') }}</div>
+                <div class="card-header">{{ __('Welcome to Our App') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <p>{{ __('You are logged in!') }}</p>
-                    <p>{{ __('Name: ') . Auth::user()->name }}</p>
-                    <p>{{ __('Email: ') . Auth::user()->email }}</p>
+                    <p>{{ __('Thank you for visiting our application!') }}</p>
+                    <p>{{ __('Here, you can explore our features, products, or services.') }}</p>
+                    <p>{{ __('Feel free to browse around and discover what we have to offer.') }}</p>
                 </div>
             </div>
         </div>

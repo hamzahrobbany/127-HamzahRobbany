@@ -1,30 +1,21 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <span class="brand-text font-weight-light">Task Management APP</span>
     </a>
 
-    <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Dashboard Menu -->
                 <li class="nav-item">
                     <a href="{{ route('dashboard') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-
-                <!-- User Management Menu -->
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            User Management
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
+                        <p>User Management<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
@@ -41,15 +32,10 @@
                         </li>
                     </ul>
                 </li>
-
-                <!-- Task Management Menu -->
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tasks"></i>
-                        <p>
-                            Task Management
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
+                        <p>Task Management<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
@@ -66,8 +52,6 @@
                         </li>
                     </ul>
                 </li>
-
-                <!-- Logout Menu -->
                 <li class="nav-item mt-auto">
                     <a href="{{ route('logout') }}" class="nav-link"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -80,7 +64,5 @@
                 </li>
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
 </aside>
