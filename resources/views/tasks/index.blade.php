@@ -15,7 +15,9 @@
         </div>
     </form>
 
-    <a href="{{ route('tasks.create') }}" class="btn btn-primary mb-3">Add Task</a>
+    <a href="{{ route('tasks.create') }}" class="btn btn-primary mb-3">
+        <i class="fas fa-plus"></i> Add Task
+    </a>
 
     <div class="card">
         <div class="card-body">
@@ -46,12 +48,18 @@
                                     <td>{{ $task->user->name }}</td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info">View</a>
-                                            <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning">Edit</a>
+                                            <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
                                             <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
                                             </form>
                                         </div>
                                     </td>
