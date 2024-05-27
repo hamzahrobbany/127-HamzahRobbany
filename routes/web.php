@@ -5,22 +5,23 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\DashboardController;
 
-
+// Authentication routes
 Auth::routes();
 
-
+// Home route
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-
+// Authenticated routes
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Dashboard route
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
-
+    // User resource routes
     Route::resource('users', UserController::class);
 
-
+    // Task resource routes
     Route::resource('tasks', TaskController::class);
 });
+
