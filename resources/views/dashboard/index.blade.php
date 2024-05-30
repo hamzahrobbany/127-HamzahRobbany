@@ -4,28 +4,20 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1>Dashboard</h1>
+    <h1 class="mb-4">Dashboard</h1>
     <p>Selamat datang, {{ Auth::user()->name }}! Ini adalah dashboard Anda. Di sini Anda dapat melihat ringkasan aktivitas terbaru, menyelesaikan tugas, atau menjelajahi fitur lainnya.</p>
 
-    <div class="row mt-3">
-        <div class="col-md-4">
-            <div class="card text-white bg-primary mb-3">
+    <div class="row mt-4">
+        <div class="col-md-6 mb-3">
+            <div class="card text-white bg-primary">
                 <div class="card-header">Total Tasks</div>
                 <div class="card-body">
                     <h5 class="card-title">{{ $totalTasks }}</h5>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card text-white bg-warning mb-3">
-                <div class="card-header">Pending Tasks</div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ $pendingTasks }}</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card text-white bg-success mb-3">
+        <div class="col-md-6 mb-3">
+            <div class="card text-white bg-success">
                 <div class="card-header">Completed Tasks</div>
                 <div class="card-body">
                     <h5 class="card-title">{{ $completedTasks }}</h5>
@@ -34,13 +26,13 @@
         </div>
     </div>
 
-    <div class="row mt-3">
+    <div class="row mt-4">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Recent Tasks</div>
                 <div class="card-body">
                     @if($recentTasks->isEmpty())
-                        <p>No recent tasks found.</p>
+                        <p class="text-muted">No recent tasks found.</p>
                     @else
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -52,6 +44,8 @@
                                         <th>Priority</th>
                                         <th>Due Date</th>
                                         <th>Assigned User</th>
+                                        <th>Labels</th>
+                                        <th>Comments</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -60,19 +54,34 @@
                                         <tr>
                                             <td>{{ $task->title }}</td>
                                             <td>{{ $task->description }}</td>
-                                            <td>{{ $task->status }}</td>
+                                            <td>
+                                                <span class="badge
+                                                    @if($task->status == 'Not Started') bg-secondary
+                                                    @elseif($task->status == 'In Progress') bg-warning
+                                                    @elseif($task->status == 'Completed') bg-success
+                                                    @endif">{{ $task->status }}</span>
+                                            </td>
                                             <td>{{ $task->priority }}</td>
                                             <td>{{ $task->due_date }}</td>
                                             <td>{{ $task->user->name }}</td>
+                                            <td>{{ $task->labels }}</td>
+                                            <td>{{ $task->comments }}</td>
                                             <td>
                                                 <div class="btn-group" role="group">
-                                                    <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                                                    <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                                    <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display:inline-block;">
+                                                    <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info btn-sm" title="View"><i class="fas fa-eye"></i></a>
+                                                    <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
+                                                    <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this task?');">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
                                                     </form>
+                                                    @if($task->status != 'Completed')
+                                                        <form action="{{ route('tasks.complete', $task->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to mark this task as completed?');">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <button type="submit" class="btn btn-success btn-sm" title="Complete"><i class="fas fa-check"></i></button>
+                                                        </form>
+                                                    @endif
                                                 </div>
                                             </td>
                                         </tr>

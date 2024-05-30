@@ -23,5 +23,7 @@ Route::middleware('auth')->group(function () {
 
     // Task resource routes
     Route::resource('tasks', TaskController::class);
+    Route::patch('/tasks/{task}/complete', [TaskController::class, 'complete'])->name('tasks.complete');
+
 });
 
