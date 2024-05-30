@@ -14,9 +14,14 @@ class AddLabelsAndCommentsToTasksTable extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->text('labels')->nullable();
-            $table->text('comments')->nullable();
+            if (!Schema::hasColumn('tasks', 'labels')) {
+                $table->text('labels')->nullable();
+            }
+            if (!Schema::hasColumn('tasks', 'comments')) {
+                $table->text('comments')->nullable();
+            }
         });
+
     }
 
     /**

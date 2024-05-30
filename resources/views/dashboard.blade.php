@@ -4,9 +4,8 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1>Dashboard</h1>
-    <p>Selamat datang, {{ Auth::user()->name }}! Ini adalah dashboard Anda. Di sini Anda dapat melihat ringkasan aktivitas terbaru, menyelesaikan tugas, atau menjelajahi fitur lainnya.</p>
-
+    <h1 class="mb-4">Dashboard</h1>
+<p>Selamat datang, {{ Auth::user()->name }}! Ini adalah dashboard Anda. Di sini Anda dapat melihat ringkasan aktivitas terbaru, menyelesaikan tugas, atau menjelajahi fitur lainnya.</p>
     <div class="row mt-3">
         <div class="col-md-4">
             <div class="card text-white bg-primary mb-3">
